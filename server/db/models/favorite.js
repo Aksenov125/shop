@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     user_id: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'favorite',
+    modelName: 'Favorite',
   });
   return favorite;
 };

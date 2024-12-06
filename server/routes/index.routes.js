@@ -7,7 +7,7 @@ const apiAuthRouter = require('./api/api.auth.routes');
 
 
 
-// router.use('/api/auth', apiAuthRouter);
+router.use('/api/auth', apiAuthRouter);
 
 
 module.exports = router;
