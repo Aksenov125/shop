@@ -7,11 +7,12 @@ const configJWT = require('../../middleware/jwtConfig');
 router.post('/registration', async (req, res) => {
   let user;
   try {
-    const { email, password, checkPassword} = req.body;
+    const { username ,email, password, rpassword} = req.body;
     console.log(req.body);
     
 
-    if (password !== checkPassword) {
+    if (password !== rpassword) {
+    
       res.json({ message: 'Пароли не совпадают!' });
       return;
     }
@@ -21,7 +22,7 @@ router.post('/registration', async (req, res) => {
       return;
     }
     const hash = await bcrypt.hash(password, 10);
-    user = await User.create({ email, password: hash });
+    user = await User.create({ email, password: hash, username });
 
     user = await User.findOne({
       where: { id: user.id },
