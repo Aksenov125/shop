@@ -1,9 +1,16 @@
-const express = require('express')
-
+require('dotenv').config();
+const express = require('express');
 const app = express();
+const serverConfig = require('./db/config/serverConfig');
 
-const PORT = 4000
+const indexRouter = require('./routes/index.routes');
 
-app.listen(PORT, () =>{
-    console.log(`РАБОТАЕТ ${PORT} `)
+serverConfig(app);
+
+app.use('/', indexRouter);
+
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => {
+  console.log(`Сервер работает на ${PORT} порту.`);
 });
