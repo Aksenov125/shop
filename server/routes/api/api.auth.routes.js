@@ -8,6 +8,8 @@ router.post('/registration', async (req, res) => {
   let user;
   try {
     const { email, password, checkPassword} = req.body;
+    console.log(req.body);
+    
 
     if (password !== checkPassword) {
       res.json({ message: 'Пароли не совпадают!' });
