@@ -7,7 +7,28 @@ export const registarationFetch = async(obj:RegUser): Promise<User> => {
         body: JSON.stringify(obj)
     });
     const data = await res.json();
-    console.log(data);
     
-    return data
+    return data.user
+
+}
+export const checkUserFetch = async(): Promise<User> => {
+    const res = await fetch ('api/auth/check');
+    console.log(res);
+
+    if (res.ok) {
+
+        const data = await res.json();
+        console.log(data);
+        
+        
+        return data.user
+    }
+    const {message} = await res.json();
+    throw message
+}
+
+export const logoutFetch = async (): Promise<{message:string}> => {
+    const res = await fetch ('/api/auth/logout')
+    const data: {message:string} = (await res.json()) as {message:string}
+return data
 }
