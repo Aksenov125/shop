@@ -1,6 +1,4 @@
 
-
-=======
 import React, { useEffect } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
@@ -15,6 +13,7 @@ import NavBar from "../features/MainContent/NavBar";
 
 import { useAppDispatch } from '../store/store';
 import { checkUser } from '../features/Auth/authSlice';
+import { categoriesThunk } from '../features/Main/mainPageSlice';
 
 
 
@@ -23,6 +22,7 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(checkUser()).catch(console.log)
+    dispatch(categoriesThunk()).catch(console.log)
   })
   
 

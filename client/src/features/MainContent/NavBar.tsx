@@ -1,6 +1,4 @@
 
-
-=======
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../store/store";
@@ -29,10 +27,7 @@ function NavBar(): JSX.Element {
     return(
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <div className="container-fluid">
-
-    <a className="navbar-brand" href="main">Shop</a>
-=======
-    <NavLink className="navbar-brand" to="#">Shop</NavLink>
+    <NavLink className="navbar-brand" to="main">Shop</NavLink>
 
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
