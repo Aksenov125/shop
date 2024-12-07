@@ -1,11 +1,12 @@
-export type category = { 
-id:number,
-title:Text
+export type Category = { 
+    id:number,
+    title:string
 }
-export type categories = { 
-    categories: category[];
-    }
 
-    export type initial = { 
-        categories:categories| null
-        }
+export type Categories = {
+    categories: Category[];
+}
+
+export type initialState = { 
+    categories:Categories| null
+}
