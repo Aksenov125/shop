@@ -5,6 +5,7 @@ import  categoriesSlice from '../features/Main/mainPageSlice'
 
 
 
+
 export const store = configureStore({
     reducer:{
         auth:authSlice,
