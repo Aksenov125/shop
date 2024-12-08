@@ -1,12 +1,16 @@
-
-import { useState } from 'react';
-import './modal.scss';
+import type { SetStateAction } from 'react';
 
 
 
-function ModalWindow(): JSX.Element | null {
-    const [isOpen, onClose] = useState(false);
-    if (!isOpen) {
+type ModalWindowProps = {
+  isOpen: boolean;
+  onClose: (value: SetStateAction<boolean>) => void;
+ 
+};
+
+
+function ModalWindow({ isOpen,  onClose }: ModalWindowProps): JSX.Element | null {
+  if (!isOpen) {
     return null;
   }
   return (

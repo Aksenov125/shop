@@ -8,6 +8,10 @@ export const categoriesThunk = createAsyncThunk('api/categories', () =>
   api.categoriesFetch(),
 );
 
+export const removeCategory = createAsyncThunk(
+    'category/remove',
+    ( id : number ) => api.fetchRemoveCategory(id),
+  );
 const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
@@ -20,6 +24,10 @@ const categoriesSlice = createSlice({
       .addCase(categoriesThunk.rejected, (state, action) => {
         state.message = action.error.message
     })
+    .addCase(removeCategory.fulfilled, (state, action) => {
+        console.log(action.payload)
+        state.categories?.filter((el)=>el.id!==action.payload.id);
+      });
   },
 });
 
