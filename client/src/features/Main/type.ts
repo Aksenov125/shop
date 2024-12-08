@@ -7,6 +7,7 @@ export type Categories = {
     categories: Category[];
 }
 
-export type initialState = { 
-    categories:Categories| null
+export type initialStat = { 
+    categories: Category[];
+    message: string | undefined
 }

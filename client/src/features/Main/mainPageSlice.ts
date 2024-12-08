@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './api';
-import { initial } from './type';
+import { initialStat } from './type';
 
-const initialState:initial = {};
+const initialState:initialStat = {categories:[], message: ''};
 
 export const categoriesThunk = createAsyncThunk('api/categories', () =>
   api.categoriesFetch(),
@@ -15,9 +15,11 @@ const categoriesSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addCase(categoriesThunk.fulfilled, (state, action) => {
-        console.log( action.payload)
         state.categories = action.payload;
       })
+      .addCase(categoriesThunk.rejected, (state, action) => {
+        state.message = action.error.message
+    })
   },
 });
 

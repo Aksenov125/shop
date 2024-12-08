@@ -22,13 +22,12 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(checkUser()).catch(console.log)
-    dispatch(categoriesThunk()).catch(console.log)
   })
   
 
 
 return(
-  
+
   <div>
     <NavBar/>
   <Routes>
