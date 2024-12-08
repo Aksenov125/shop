@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../../store/store';
 
 import { RootState } from '../../../store/store';
-import { categoriesThunk } from '../mainPageSlice';
+import { categoriesThunk, removeCategory } from '../mainPageSlice';
+
 
 function MainPage(): JSX.Element {
     const dispatch = useAppDispatch();
@@ -11,6 +12,11 @@ function MainPage(): JSX.Element {
     useEffect(() => {
         dispatch(categoriesThunk()).catch(console.log);
     }, [dispatch]);
+    const removePreferencess = async (id: number) => {
+        await dispatch(removeCategory(id)).catch(console.log);
+        dispatch(categoriesThunk()).catch(console.log);
+      };
+    
     
     const categories = useSelector((store: RootState) => store.categories.categories);
     
@@ -21,6 +27,13 @@ function MainPage(): JSX.Element {
             {categories.map((category) => (
                 <div key={category.id}>
                     <p>{category.title}</p>
+                    <button
+                className="btn__del"
+                type="button"
+                onClick={() => removePreferencess(category.id)}
+              >
+                удалить
+              </button>
                 </div>
             ))}
         </div>
