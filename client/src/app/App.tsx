@@ -13,7 +13,6 @@ import NavBar from "../features/MainContent/NavBar";
 
 import { useAppDispatch } from '../store/store';
 import { checkUser } from '../features/Auth/authSlice';
-import { categoriesThunk } from '../features/Main/mainPageSlice';
 
 
 

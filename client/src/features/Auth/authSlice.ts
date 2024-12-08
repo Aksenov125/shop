@@ -1,12 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { RegUser, StateAuth } from "./type";
+import { RegUser, StateAuth, UserLog } from "./type";
 import * as api from './api'
 
 const initialState: StateAuth = {user:null, message: ''}
 
 export const authRegistration = createAsyncThunk('auth/registaration', (obj:RegUser) => api.registarationFetch(obj))
 export const checkUser = createAsyncThunk('check/user', ()=> api.checkUserFetch())
-export const logout = createAsyncThunk('logout', () => api.logoutFetch())
+export const logout = createAsyncThunk('logout/auth', () => api.logoutFetch())
+export const loginThunk = createAsyncThunk('login/auth', (obj:UserLog) => api.loginFetch(obj))
+
 
 
 
@@ -37,6 +39,13 @@ const authSlice = createSlice({
         })
         .addCase(logout.rejected, (state, action) => {
             state.message = 'error logout'
+        })
+        .addCase(loginThunk.fulfilled, (state, action) => {
+            state.user = action.payload
+            state.message = 'ok'
+        })
+        .addCase(loginThunk.rejected, (state, action)=> {
+            state.message = 'error'
         })
 
     }

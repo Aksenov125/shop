@@ -6,6 +6,11 @@ export type User = {
     rpassword:string
 }
 
+export type UserLog = {
+    email:string
+    password:string
+}
+
 
 export type RegUser = {
     username:string
