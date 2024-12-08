@@ -1,10 +1,9 @@
-import { Categories } from './type';
+import {  Category } from './type';
 
-export const categoriesFetch = async (): Promise<Categories> => {
+export const categoriesFetch = async (): Promise<Category[]> => {
   const res = await fetch('/api/categories');
   
   const data = await res.json();
-  console.log(data, '123123123123');
 
-  return data;
+  return data.categories;
 };
