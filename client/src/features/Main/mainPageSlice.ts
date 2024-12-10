@@ -1,13 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './api';
-import { initialStat } from './type';
+import {  Category, initialStat } from './type';
 
 const initialState:initialStat = {categories:[], message: ''};
 
 export const categoriesThunk = createAsyncThunk('api/categories', () =>
   api.categoriesFetch(),
 );
-
+export const createCategory = createAsyncThunk(
+    'category/create',
+    (  title:Category['title'] ) => api.featchCreateCategory(title),
+  );
 export const removeCategory = createAsyncThunk(
     'category/remove',
     ( id : number ) => api.fetchRemoveCategory(id),
@@ -25,9 +28,12 @@ const categoriesSlice = createSlice({
         state.message = action.error.message
     })
     .addCase(removeCategory.fulfilled, (state, action) => {
-        console.log(action.payload)
         state.categories?.filter((el)=>el.id!==action.payload.id);
-      });
+      })
+      .addCase(createCategory.fulfilled, (state, action) => {
+        state.categories?.push(action.payload);
+        
+      })
   },
 });
 
