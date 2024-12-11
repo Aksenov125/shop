@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Category, Item } = require('../../db/models');
+const { Category,podcategory } = require('../../db/models');
 
 router.get("/", async (req,res)=>{
     try {
 
-      const categories= await Category.findAll({include:Item})
+      const categories= await Category.findAll({include:podcategory})
       console.log(categories, '1231223123123132123');
 
         
