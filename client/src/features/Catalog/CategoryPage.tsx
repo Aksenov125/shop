@@ -11,8 +11,9 @@ function CategoryPage ():JSX.Element{
     const {categoryTitle} = useParams()
 
     const categories = useSelector((store:RootState) => store.categories.categories)
-console.log(categories, '122211');
+
     const currentCategory:ItemCategory = categoryTitle ? categories.find((category) => category.title === categoryTitle): undefined
+console.log(currentCategory);
 
 
     return (
