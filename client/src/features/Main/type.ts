@@ -11,3 +11,14 @@ export type initialStat = {
     categories: Category[];
     message: string | undefined
 }
+
+export type Item = {
+    id:number
+    title:string
+    img:string
+    size:string
+}
+
+export type ItemCategory = {
+    Items:[]
+}

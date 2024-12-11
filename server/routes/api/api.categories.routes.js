@@ -1,11 +1,10 @@
 const router = require('express').Router();
 const { Category, Item } = require('../../db/models');
-console.log('1');
 
 router.get("/", async (req,res)=>{
     try {
-      const categories= await Category.findAll()
-      console.log(categories);
+      const categories= await Category.findAll({include:Item})
+      console.log(categories, '1231223123123132123');
         
         res.status(200).json({categories})
         
@@ -14,6 +13,7 @@ router.get("/", async (req,res)=>{
         res.status(500).json({ error: message });
       }
 })
+
 router.delete("/delete/:id", async (req, res) => {
     try {
       const { id } = req.params;
