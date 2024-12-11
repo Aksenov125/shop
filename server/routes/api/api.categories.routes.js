@@ -7,8 +7,6 @@ router.get("/", async (req,res)=>{
       const categories= await Category.findAll({include:Item})
       console.log(categories, '1231223123123132123');
 
-      const categories= await Category.findAll()
-
         
         res.status(200).json({categories})
         
