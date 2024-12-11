@@ -2,7 +2,7 @@ import React from "react";
 
 import * as api from '../Main/type'
 import { NavLink } from "react-router-dom";
-import ItemPage from "./ItemPage";
+
 
 
 function CategoriesItem({category}: {category:api.Category}): JSX.Element {
