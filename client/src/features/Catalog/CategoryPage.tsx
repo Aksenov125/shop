@@ -5,6 +5,7 @@ import { RootState } from "../../store/store";
 import CategoriesItem from "./CategoryItem";
 import ItemPage from "./ItemPage";
 import { Item, ItemCategory } from "../Main/type";
+import './style/card.css'
 
 function CategoryPage ():JSX.Element{
     const {categoryTitle} = useParams()
@@ -22,7 +23,7 @@ console.log(categories, '122211');
                 ))}
             </div>
             
-            <div>
+            <div className="container">
                 {currentCategory?.Items.map((item:Item) => <ItemPage key={item.id} item={item}/> )}
             </div>
 

@@ -3,6 +3,8 @@ export type Category = {
     title:string
 }
 
+export type CategoryT = Omit<Category, 'id'>
+
 export type Categories = {
     categories: Category[];
 }
