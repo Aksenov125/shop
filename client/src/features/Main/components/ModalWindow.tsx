@@ -13,14 +13,12 @@ function ModalWindow({ isOpen, onClose }: ModalWindowProps): JSX.Element | null 
     const [title, setTitle] = useState('');
     const onHandleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
-        const category = {
-          title
-        };
+        const category = { title };
             dispatch(createCategory(category)).catch(console.log);
             
             setTitle('')
       };
-  if (!isOpen) {
+  if (!isOpen) {``
     return null;
   }
 
@@ -31,7 +29,7 @@ function ModalWindow({ isOpen, onClose }: ModalWindowProps): JSX.Element | null 
         <form className="form__registration" onSubmit={onHandleSubmit}>
       <label htmlFor="title">
           <input
-            type="title"
+            type="text"
             name="title"
             placeholder="title"
             required

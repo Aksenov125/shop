@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './api';
-import {  Category, initialStat } from './type';
+import {   initialStat } from './type';
 
 const initialState:initialStat = {categories:[], message: ''};
 
@@ -8,9 +8,11 @@ export const categoriesThunk = createAsyncThunk('api/categories', () =>
   api.categoriesFetch(),
 );
 export const createCategory = createAsyncThunk(
-    'category/create',
-    (  title:Category['title'] ) => api.featchCreateCategory(title),
-  );
+  'category/create',
+  async (category: { title: string }) => {
+    return await api.featchCreateCategory(category);
+  }
+);
 export const removeCategory = createAsyncThunk(
     'category/remove',
     ( id : number ) => api.fetchRemoveCategory(id),

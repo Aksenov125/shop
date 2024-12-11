@@ -19,14 +19,12 @@ export const categoriesFetch = async (): Promise<Category[]> => {
     return data.categories
 
 }
-export const featchCreateCategory = async(title:Category['title']): Promise<Category> => {
-    const res = await fetch (`api/categories/addCategory`, {
+export const featchCreateCategory = async (category: { title: string }): Promise<Category> => {
+    const res = await fetch(`api/categories/addCategory`, {
         method: 'POST',
-        headers: {'Content-Type' : 'application/json'},
-        body: JSON.stringify(title)
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(category)
     });
     const data = await res.json();
-    console.log(data)
-    return data.category
-
+    return data.category;
 }
